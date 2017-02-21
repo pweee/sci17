@@ -1,0 +1,441 @@
+<!--
+
+
+STUFF TO INPUT
+
+
+• digital clock and date (as much as possible running automatically on all Web pages)
+• appropriate interactive popups
+• buttons with appropriate functions
+• hyperlinks to static and dynamic external Web pages
+• hyperlinks among your Web pages
+• Web form regarding submission of info in case of a query
+• visitor counter
+• appropriate calculator app (optional and depends on the topic)
+• other appropriate JavaScript objects/elements that will add value to your work
+
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+
+function myTimer()  {
+   var d = new Date();
+   document.getElementById("TIME").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+
+<style>
+
+
+#home {font-size:150%; text-align: right; padding-top:50px;height:600px;color: #fff; background-color: #000000;}
+#description {padding-top:40px;height:600px;color: #fff; background-color: #1E88E5;}
+#causes {padding-top:40px;height:600px;color: #fff; background-color: #673ab7;}
+#effects {padding-top:40px;height:600px;color: #fff; background-color: #ff9800;}
+#prevention {padding-top:40px;height:600px;color: #fff; background-color: #00bcd4;}
+#treatment {padding-top:40px;height:600px;color: #fff; background-color: #009688;}
+#sources {font-size:100%; padding-top:40px;height:600px;color: #000; background-color: #ffffff;}
+#content1, #content3, #content5, #img2, #img4 {
+  float: left ;
+  width: 50% ;
+}
+
+
+#content0 { width: 50%; height: 100%; float: left; }
+#img0, #img05 { width: 25%; height: 100%; float: left; padding-top:20px;}
+
+#img1, #img3, #img5, #content2, #content4 {
+  padding-top:50px;
+  float: right;
+  width: 50%;
+}
+
+p {
+  font-size: 150%
+}
+
+#canvas {
+  padding-right: 50px;
+}
+p,h1,h5,h2{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+body {
+  font-family: arial;
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #000080;
+}
+
+
+
+
+div {
+height: auto; /*if more info comes on the page, it will stretch down*/
+width: auto;
+margin: 0 auto; /*this will cause the div to be in the center*/
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+
+
+
+
+
+<!--Navbar-->
+
+
+
+
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#description">Description</a></li>
+  <li><a href="#causes">Causes</a></li>
+  <li><a href="#effects">Effects</a></li>
+  <li><a href="#prevention">Prevention</a></li>
+  <li><a href="#treatment">Treatment</a></li>
+  <li><a href="sources.html">Sources</a></li>
+</ul>
+
+
+<!--Navbar-->
+
+
+<div id="home">
+<div id="content0">
+<h1>Pulmonary Emphysema</h1>
+<h2>A circulatory-respiratory disease.</h2>
+</div>
+<div id="img0">
+<canvas id="canvas" width="250" height="250"></canvas>
+
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+
+
+<br>
+<br>
+<FORM NAME="Calc" style=padding-left:20px;>
+<TABLE BORDER=4
+<TR>
+<TD>
+<INPUT TYPE="text"   NAME="Input" Size="8">
+<br>
+</TD>
+</TR>
+<TR>
+<TD>
+<INPUT TYPE="button" NAME="one"   VALUE="  1  " OnClick="Calc.Input.value += '1'">
+<INPUT TYPE="button" NAME="two"   VALUE="  2  " OnCLick="Calc.Input.value += '2'">
+<INPUT TYPE="button" NAME="three" VALUE="  3  " OnClick="Calc.Input.value += '3'">
+<INPUT TYPE="button" NAME="plus"  VALUE="  +  " OnClick="Calc.Input.value += ' + '">
+<br>
+<INPUT TYPE="button" NAME="four"  VALUE="  4  " OnClick="Calc.Input.value += '4'">
+<INPUT TYPE="button" NAME="five"  VALUE="  5  " OnCLick="Calc.Input.value += '5'">
+<INPUT TYPE="button" NAME="six"   VALUE="  6  " OnClick="Calc.Input.value += '6'">
+<INPUT TYPE="button" NAME="minus" VALUE="  -  " OnClick="Calc.Input.value += ' - '">
+<br>
+<INPUT TYPE="button" NAME="seven" VALUE="  7  " OnClick="Calc.Input.value += '7'">
+<INPUT TYPE="button" NAME="eight" VALUE="  8  " OnCLick="Calc.Input.value += '8'">
+<INPUT TYPE="button" NAME="nine"  VALUE="  9  " OnClick="Calc.Input.value += '9'">
+<INPUT TYPE="button" NAME="times" VALUE="  x  " OnClick="Calc.Input.value += ' * '">
+<br>
+<INPUT TYPE="button" NAME="clear" VALUE="  c  " OnClick="Calc.Input.value = ''">
+<INPUT TYPE="button" NAME="zero"  VALUE="  0  " OnClick="Calc.Input.value += '0'">
+<INPUT TYPE="button" NAME="DoIt"  VALUE="  =  " OnClick="Calc.Input.value = eval(Calc.Input.value)">
+<INPUT TYPE="button" NAME="div"   VALUE="  /  " OnClick="Calc.Input.value += ' / '">
+<br>
+</TD>
+</TR>
+</TABLE>
+</FORM>
+</right>
+</div>
+</div>
+
+
+<div id="description">
+<div id="content1">
+
+
+<h1>Description</h1>
+<p>Pulmonary Emphysema is a form of chronic obstructive pulmonary disease, a lung disease in which the walls that separate the lung's tiny air sacs (alveoli) are damaged.</p>
+</div>
+
+
+<div id="img1">
+<center>
+<img id="myImage" onclick="changeImage()" src="http://i.imgur.com/riMUTq9.jpg" width="450" height="450">
+<h5>Click on the image to see what alveoli with and without the disease looks like.</h5>
+</center>
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("VIZ")) {
+        image.src = "http://i.imgur.com/riMUTq9.jpg";
+    } else {
+        image.src = "http://i.imgur.com/VIZsLvW.jpg";
+    }
+}
+</script>
+
+
+</div>
+</div>
+
+
+<div id="causes">
+<div id="content2">
+<h1>Causes</h1>
+<p>
+Smoking, specially in large amounts is the main cause of Pulmonary Emphysema.
+Other cause include:
+Do you breathe passive (secondhand) smoke at work or at home?
+Do you live or work in an area where you are exposed to airborne irritants or noxious materials?
+Do you live in an area with significant air pollution?
+Is there a family history of:
+AAT deficiency
+Early onset of emphysema
+Non-smokers who developed emphysema
+</p>
+</div>
+<div id="img2">
+
+
+
+
+</div>
+</div>
+
+
+
+
+<div id="effects">
+<div id="content3">
+<h1>Effects</h1>
+<p>This damage results in the lungs losing their normal elasticity. Without the ability to expand and contract with each breath, the lungs become flaccid and loose, increasingly unable to move air in and out or properly exchange oxygen and carbon dioxide between the air and blood. As the lungs become overly inflated, even the smallest physical exertion becomes difficult.</p>
+</div>
+
+
+<div id="img3">
+
+
+</div>
+</div>
+
+
+
+
+<div id="prevention">
+<div id="content4">
+<h1>Prevention</h1>
+<p>
+If you smoke, stop. If you don't smoke, don't start. By quitting smoking you can either prevent emphysema or slow its progression.
+You also should limit your exposure to air pollution. Restrict your outdoor activity when there are reports of high smog levels.
+People exposed to harmful chemicals at work should speak to their employers about respirator masks. Or, consult with a specialist in occupational medicine.
+If you have emphysema, ask your doctor about vaccinations against influenza (flu) and pneumococcal pneumonia. These vaccinations can help to prevent life-threatening respiratory infections in people with lung disease.
+</p>
+</div>
+<div id="img4">
+</div>
+</div>
+
+
+<div id="treatment">
+<div id="content5">
+<h1>Treatment</h1>
+
+
+<p>
+There is no treatment that directly cures Pulmonary Emphysema.
+<p>But there are remedies such as Lung Volume Reduction Surgery,and the taking of antibiotics that can help to:</p>
+<p>+ Relieve symptoms</p>
+<p>+ Treat complications</p>
+<p>+ Minimize disability</p>
+<p>Doctors' top treatment advice is to quit smoking. This is the single most important factor for maintaining healthy lungs. Stopping smoking is most effective at the early stages of emphysema. But it also can slow the loss of lung function in later stages of the disease.</p>
+</div>
+<div id="img5">
+
+
+</div>
+</div>
+
+
+
+
+<div id="sources">
+<h1>Sources</h1>
+<p style=font-size:100%>
+All sources are journals, theses, books or other verified professional studies on the said topic. All sources were analysed and checked before use. Gratitude and credit is expressed to all the sources used.
+</p>
+<!--CHANGE TO APA -->
+<p style=text-align:center;font-size:100%>PDFs and Print Sources</p>
+<p style=font-size:100%>
+https://www.tipharma.com/fileadmin/user_upload/Theses/PDF/Saskia_Braber_T1-103.pdf
+<br>
+http://www.scielo.br/pdf/eins/v8n2/1679-4508-eins-8-2-0248.pdf
+<br>
+http://www.european-radiology.org/cms/filepool/399/EN/fulltext%20issue%2003_volume19_p537-551.pdf
+<br>
+http://physiologyonline.physiology.org/content/nips/21/6/396.full.pdf
+<br>
+http://www.tandfonline.com/doi/abs/10.1080/00039896.1962.10663295?journalCode=vzeh20
+</p>
+<p style=text-align:center;font-size:100%>WEB and IMAGES</p>
+<p style=font-size:100%>
+http://www.tabletsmanual.com/wiki/read/pulmonary_emphysema_and_bronchitis
+<br>
+http://www.siumed.edu/surgery/cardiothoracic/emphysema.html
+<br>
+https://www.drugs.com/health-guide/emphysema.html
+</p>
+<br>
+
+
+<!-- SHOULD I REMOVE THIS?!?!?! -->
+<p id="demo" style=text-align:center; font-size:200%></p>
+
+
+
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

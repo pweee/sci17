@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+
+function myTimer()  {
+   var d = new Date();
+   document.getElementById("TIME").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+
+<style>
+
+
+#home {font-size:150%; text-align: right; padding-top:50px;height:600px;color: #fff; background-color: #000000;}
+#description {padding-top:50px;height:600px;color: #fff; background-color: #1E88E5;}
+#causes {padding-top:50px;height:600px;color: #fff; background-color: #673ab7;}
+#effects {padding-top:50px;height:600px;color: #fff; background-color: #ff9800;}
+#prevention {padding-top:50px;height:600px;color: #fff; background-color: #00bcd4;}
+#treatment {padding-top:50px;height:600px;color: #fff; background-color: #009688;}
+#sources {font-size:100%; padding-top:50px;height:600px;color: #000; background-color: #ffffff;}
+#content1, #content3, #content5, #img2, #img4 {
+  float: left ;
+  width: 50% ;
+}
+
+
+#content0 { width: 50%; height: 100%; float: left; }
+#img0, #img05 { width: 25%; height: 100%; float: left; padding-top:20px;}
+
+
+
+
+
+
+#img1, #img3, #img5, #content2, #content4 {
+  padding-top:50px;
+  float: right;
+  width: 50%;
+}
+
+
+p {
+  font-size: 150%
+}
+
+
+#canvas{
+  padding-right: 50px;
+}
+p,h1,h5,h2{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+body {
+  font-family: arial;
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+li {
+    float: left;
+}
+
+
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+
+
+
+.active {
+    background-color: #4CAF50;
+}
+
+
+
+
+div {
+height: auto; /*if more info comes on the page, it will stretch down*/
+width: auto;
+margin: 0 auto; /*this will cause the div to be in the center*/
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+
+
+
+
+
+<!--Navbar-->
+
+
+
+
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#description">Description</a></li>
+  <li><a href="#causes">Causes</a></li>
+  <li><a href="#effects">Effects</a></li>
+  <li><a href="#prevention">Prevention</a></li>
+  <li><a href="#treatment">Treatment</a></li>
+  <li><a href="#sources">Sources</a></li>
+</ul>
+
+
+<!--Navbar-->
+
+<br>
+<br>
+<br>
+
+<p style=font-size:100%>
+All sources are journals, theses, books or other verified professional studies on the said topic. All sources were analysed and checked before use. Gratitude and credit is expressed to all the sources used.
+</p>
+<!--CHANGE TO APA -->
+<p style=text-align:center;font-size:100%>PDFs and Print Sources</p>
+<p style=font-size:100%>
+https://www.tipharma.com/fileadmin/user_upload/Theses/PDF/Saskia_Braber_T1-103.pdf
+<br>
+http://www.scielo.br/pdf/eins/v8n2/1679-4508-eins-8-2-0248.pdf
+<br>
+http://www.european-radiology.org/cms/filepool/399/EN/fulltext%20issue%2003_volume19_p537-551.pdf
+<br>
+http://physiologyonline.physiology.org/content/nips/21/6/396.full.pdf
+<br>
+http://www.tandfonline.com/doi/abs/10.1080/00039896.1962.10663295?journalCode=vzeh20
+</p>
+<p style=text-align:center;font-size:100%>WEB and IMAGES</p>
+<p style=font-size:100%>
+http://www.tabletsmanual.com/wiki/read/pulmonary_emphysema_and_bronchitis
+<br>
+http://www.siumed.edu/surgery/cardiothoracic/emphysema.html
+<br>
+https://www.drugs.com/health-guide/emphysema.html
+</p>
+<br>
+</body>
+</html>
