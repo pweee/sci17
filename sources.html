@@ -2,6 +2,10 @@
 <html>
 <head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scalmaximum-scale=1.0, user-scalable=no" />
+<link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
+<link rel="stylesheet" href="style.css" type="text/css" />
+
 
 <script>
 var myVar = setInterval(myTimer, 1000);
@@ -18,25 +22,19 @@ function myTimer()  {
 
 
 #home {font-size:150%; text-align: right; padding-top:50px;height:600px;color: #fff; background-color: #000000;}
-#description {padding-top:50px;height:600px;color: #fff; background-color: #1E88E5;}
-#causes {padding-top:50px;height:600px;color: #fff; background-color: #673ab7;}
-#effects {padding-top:50px;height:600px;color: #fff; background-color: #ff9800;}
-#prevention {padding-top:50px;height:600px;color: #fff; background-color: #00bcd4;}
-#treatment {padding-top:50px;height:600px;color: #fff; background-color: #009688;}
-#sources {font-size:100%; padding-top:50px;height:600px;color: #000; background-color: #ffffff;}
+#description {padding-top:40px;height:600px;color: #fff; background-color: #1E88E5;}
+#causes {padding-top:40px;height:600px;color: #fff; background-color: #673ab7;}
+#effects {padding-top:40px;height:600px;color: #fff; background-color: #ff9800;}
+#prevention {font-size:75%;padding-top:40px;height:600px;color: #fff; background-color: #00bcd4;}
+#treatment {font-size:75%; padding-top:40px;height:600px;color: #fff; background-color: #009688;}
+#sources {font-size:100%; padding-top:40px;height:600px;color: #000; background-color: #ffffff;}
 #content1, #content3, #content5, #img2, #img4 {
   float: left ;
   width: 50% ;
 }
 
-
 #content0 { width: 50%; height: 100%; float: left; }
-#img0, #img05 { width: 25%; height: 100%; float: left; padding-top:20px;}
-
-
-
-
-
+#img0 { width: 50%; height: 100%; float: left; padding-top:50px;}
 
 #img1, #img3, #img5, #content2, #content4 {
   padding-top:50px;
@@ -44,13 +42,30 @@ function myTimer()  {
   width: 50%;
 }
 
+#modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+	margin: 15% auto;
+	background-color: #FFFFFF;
+
+}
 
 p {
   font-size: 150%
 }
 
-
-#canvas{
+#canvas {
   padding-right: 50px;
 }
 p,h1,h5,h2{
@@ -73,19 +88,9 @@ ul {
     width: 100%;
 }
 
-
-
-
-
-
-
-
 li {
     float: left;
 }
-
-
-
 
 li a {
     display: block;
@@ -94,35 +99,17 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-
-
-
-
 li a:hover:not(.active) {
     background-color: #111;
 }
-
-
-
-
 .active {
-    background-color: #4CAF50;
+    background-color: #000080;
 }
-
-
-
-
 div {
 height: auto; /*if more info comes on the page, it will stretch down*/
 width: auto;
 margin: 0 auto; /*this will cause the div to be in the center*/
 }
-
-
-
-
-
-
 </style>
 </head>
 <body>
@@ -138,12 +125,12 @@ margin: 0 auto; /*this will cause the div to be in the center*/
 
 
 <ul>
-  <li><a class="active" href="index.html/#home">Home</a></li>
+  <li><a class="active" href="index.html#home">Home</a></li>
   <li><a href="index.html#description">Description</a></li>
-  <li><a href="index.html##causes">Causes</a></li>
-  <li><a href="index.html##effects">Effects</a></li>
-  <li><a href="/#prevention">Prevention</a></li>
-  <li><a href="/#treatment">Treatment</a></li>
+  <li><a href="index.html#causes">Causes</a></li>
+  <li><a href="index.html#effects">Effects</a></li>
+  <li><a href="index.html#prevention">Prevention</a></li>
+  <li><a href="index.html#treatment">Treatment</a></li>
   <li><a href="sources.html">Sources</a></li>
 </ul>
 
@@ -154,12 +141,14 @@ margin: 0 auto; /*this will cause the div to be in the center*/
 <br>
 <br>
 
+<div id="sources">
+<h1>Sources</h1>
 <p style=font-size:100%>
 All sources are journals, theses, books or other verified professional studies on the said topic. All sources were analysed and checked before use. Gratitude and credit is expressed to all the sources used.
 </p>
 <!--CHANGE TO APA -->
 <p style=text-align:center;font-size:100%>PDFs and Print Sources</p>
-<p style=font-size:100%>
+<p>
 https://www.tipharma.com/fileadmin/user_upload/Theses/PDF/Saskia_Braber_T1-103.pdf
 <br>
 http://www.scielo.br/pdf/eins/v8n2/1679-4508-eins-8-2-0248.pdf
@@ -179,5 +168,158 @@ http://www.siumed.edu/surgery/cardiothoracic/emphysema.html
 https://www.drugs.com/health-guide/emphysema.html
 </p>
 <br>
+
+<center>
+
+
+<canvas id="canvas" width="250" height="250"></canvas>
+
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+
+
+<br>
+<br>
+<FORM NAME="Calc" style=padding-left:20px;>
+<TABLE BORDER=4
+<TR>
+<TD>
+<INPUT TYPE="text"   NAME="Input" Size="8">
+<br>
+</TD>
+</TR>
+<TR>
+<TD>
+<INPUT TYPE="button" NAME="one"   VALUE="  1  " OnClick="Calc.Input.value += '1'">
+<INPUT TYPE="button" NAME="two"   VALUE="  2  " OnCLick="Calc.Input.value += '2'">
+<INPUT TYPE="button" NAME="three" VALUE="  3  " OnClick="Calc.Input.value += '3'">
+<INPUT TYPE="button" NAME="plus"  VALUE="  +  " OnClick="Calc.Input.value += ' + '">
+<br>
+<INPUT TYPE="button" NAME="four"  VALUE="  4  " OnClick="Calc.Input.value += '4'">
+<INPUT TYPE="button" NAME="five"  VALUE="  5  " OnCLick="Calc.Input.value += '5'">
+<INPUT TYPE="button" NAME="six"   VALUE="  6  " OnClick="Calc.Input.value += '6'">
+<INPUT TYPE="button" NAME="minus" VALUE="  -  " OnClick="Calc.Input.value += ' - '">
+<br>
+<INPUT TYPE="button" NAME="seven" VALUE="  7  " OnClick="Calc.Input.value += '7'">
+<INPUT TYPE="button" NAME="eight" VALUE="  8  " OnCLick="Calc.Input.value += '8'">
+<INPUT TYPE="button" NAME="nine"  VALUE="  9  " OnClick="Calc.Input.value += '9'">
+<INPUT TYPE="button" NAME="times" VALUE="  x  " OnClick="Calc.Input.value += ' * '">
+<br>
+<INPUT TYPE="button" NAME="clear" VALUE="  c  " OnClick="Calc.Input.value = ''">
+<INPUT TYPE="button" NAME="zero"  VALUE="  0  " OnClick="Calc.Input.value += '0'">
+<INPUT TYPE="button" NAME="DoIt"  VALUE="  =  " OnClick="Calc.Input.value = eval(Calc.Input.value)">
+<INPUT TYPE="button" NAME="div"   VALUE="  /  " OnClick="Calc.Input.value += ' / '">
+<br>
+</TD>
+</TR>
+</TABLE>
+</FORM>
+
+
+
+<p id="date" style="color: BLACK; font-size: 200%;"> </p>
+
+<script>
+
+var d = new Date();
+document.getElementById("date").innerHTML = "Today is " + d.toDateString();
+
+</script>
+
+Visitor Counter
+
+<br/> <br/>
+
+<div align='center'><a href='http://www.hit-counter-html-code.com'><img src='http://hit-counter-html-code.com/wp-content/themes/customizr/hitcounter/c.php?d=9&id=160471&s=1' border='0' title='Visitor Counter' width=350 ></a><br / ><small><a href='http://www.hit-counter-html-code.com' title="Visitor Counter"></a></small></div>
+
+</center>
+
+</div>
+
 </body>
 </html>

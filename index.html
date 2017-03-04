@@ -22,6 +22,10 @@ STUFF TO INPUT
 <html>
 <head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scalmaximum-scale=1.0, user-scalable=no" />
+<link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
+<link rel="stylesheet" href="style.css" type="text/css" />
+
 
 <script>
 var myVar = setInterval(myTimer, 1000);
@@ -41,8 +45,8 @@ function myTimer()  {
 #description {padding-top:40px;height:600px;color: #fff; background-color: #1E88E5;}
 #causes {padding-top:40px;height:600px;color: #fff; background-color: #673ab7;}
 #effects {padding-top:40px;height:600px;color: #fff; background-color: #ff9800;}
-#prevention {padding-top:40px;height:600px;color: #fff; background-color: #00bcd4;}
-#treatment {padding-top:40px;height:600px;color: #fff; background-color: #009688;}
+#prevention {font-size:75%;padding-top:40px;height:600px;color: #fff; background-color: #00bcd4;}
+#treatment {font-size:75%; padding-top:40px;height:600px;color: #fff; background-color: #009688;}
 #sources {font-size:100%; padding-top:40px;height:600px;color: #000; background-color: #ffffff;}
 #content1, #content3, #content5, #img2, #img4 {
   float: left ;
@@ -50,12 +54,31 @@ function myTimer()  {
 }
 
 #content0 { width: 50%; height: 100%; float: left; }
-#img0, #img05 { width: 25%; height: 100%; float: left; padding-top:20px;}
+#img0 { width: 50%; height: 100%; float: left; padding-top:50px;}
 
 #img1, #img3, #img5, #content2, #content4 {
   padding-top:50px;
   float: right;
   width: 50%;
+}
+
+#modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+	margin: 15% auto;
+	background-color: #FFFFFF;
+
 }
 
 p {
@@ -129,7 +152,193 @@ margin: 0 auto; /*this will cause the div to be in the center*/
 <h1>Pulmonary Emphysema</h1>
 <h2>A circulatory-respiratory disease.</h2>
 </div>
+<center>
 <div id="img0">
+<button id="subscribe" style="font-size:200%;">Get updates about the site.</button>
+<div id="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="innerpara">Put your email here.</p>
+      <input type="text" name="email" placeholder="stuff@somestuff.com" />
+      <button class="go" id="exit">Go!</button>
+<!--lel no updates anyway -->
+</center>
+</div>
+</div>
+</div>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById('modal');
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("subscribe");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  var exit = document.getElementById("exit");
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+      modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  exit.onclick = function() {
+      modal.style.display = "none";
+  }
+
+
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+
+
+</div>
+</div>
+
+
+<div id="description">
+<div id="content1">
+<h1>Description</h1>
+<p>Pulmonary Emphysema is a form of chronic obstructive pulmonary disease, a lung disease in which the walls that separate the lung's tiny air sacs (alveoli) are damaged.</p>
+</div>
+<div id="img1">
+<img id="myImage" onclick="changeImage()" src="http://i.imgur.com/riMUTq9.jpg" width="450" height="450">
+<h5>Click on the image to see what alveoli with and without the disease looks like.</h5>
+<script>x
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("VIZ")) {
+        image.src = "http://i.imgur.com/riMUTq9.jpg";
+    } else {
+        image.src = "http://i.imgur.com/VIZsLvW.jpg";
+    }
+}
+</script>
+
+</div>
+</div>
+
+
+<div id="causes">
+
+<div id="img2">
+<center>
+<img src="http://i.imgur.com/2JZOPAs.jpg" width="450" height="450">
+</center>
+</div>
+
+<div id="content2">
+<h1>Causes</h1>
+<p>
+Smoking, specially in large amounts is the main cause of Pulmonary Emphysema.
+Other cause include: breathing passive (secondhand) smoke at work or at home, living or working in an area where you are exposed to airborne irritants or noxious materials or
+living in an area with significant air pollution.
+In addition, having a family history of: AAT deficiency, Early onset of emphysema or Non-smokers who developed emphysema could increase the chances of getting pulmonary emphysema.
+</p>
+</div>
+</div>
+
+
+
+
+<div id="effects">
+<div id="content3">
+<h1>Effects</h1>
+<p>This damage results in the lungs losing their normal elasticity. Without the ability to expand and contract with each breath, the lungs become flaccid and loose, increasingly unable to move air in and out or properly exchange oxygen and carbon dioxide between the air and blood. As the lungs become overly inflated, even the smallest physical exertion becomes difficult.</p>
+<p>This may cause the patient to suffer cough, wheezing, and other simila symptoms due to the lack of oxygen and the improper functioning of the lung, as a result of the disease.</p>
+</div>
+<div id="img3">
+<center>
+<img src="https://www.elcaminohospital.org/sites/ech/files/library_images/323092.jpg" width="450" height="450">
+</center>
+</div>
+</div>
+
+
+
+
+<div id="prevention">
+<div id="content4">
+<h1>Prevention</h1>
+<p>
+If you smoke, stop. If you don't smoke, don't start. By quitting smoking you can either prevent emphysema or slow its progression.
+You also should limit your exposure to air pollution. Restrict your outdoor activity when there are reports of high smog levels.
+People exposed to harmful chemicals at work should speak to their employers about respirator masks. Or, consult with a specialist in occupational medicine.
+If you have emphysema, ask your doctor about vaccinations against influenza (flu) and pneumococcal pneumonia. These vaccinations can help to prevent life-threatening respiratory infections in people with lung disease.
+</p>
+</div>
+<div id="img4">
+<center>
+<img src="http://www.belmarrahealth.com/wp-content/uploads/2015/10/ThinkstockPhotos-485052180.jpg" width="450" height="450">
+</center>
+</div>
+</div>
+
+
+<div id="treatment">
+<div id="content5">
+<h1>Treatment</h1>
+<p>
+There is no treatment that directly cures Pulmonary Emphysema.
+<p>But there are remedies such as Lung Volume Reduction Surgery, the surgical extraction of diseased parts of the lung and the taking of antibiotics that can help to:</p>
+<p>+ Relieve symptoms</p>
+<p>+ Treat complications</p>
+<p>+ Minimize disability</p>
+<p>Doctors' top treatment advice is to quit smoking. Such is the single most important factor for maintaining healthy lungs. Stopping smoking is most effective at the early stages of emphysema. But it also can slow the loss of lung function in later stages of the disease.</p>
+</div>
+<div id="img5">
+<center>
+<img src="http://www.marcoscarci.co.uk/images/severe-chest-infection-surgery.jpg?crc=3919689646" width="450" height="450">
+</center>
+</div>
+</div>
+
+
+
+
+<div id="sources">
+<h1>Sources</h1>
+<p style=font-size:100%>
+All sources are journals, theses, books or other verified professional studies on the said topic. All sources were analysed and checked before use. Gratitude and credit is expressed to all the sources used.
+</p>
+<!--CHANGE TO APA -->
+<p style=text-align:center;font-size:100%>PDFs and Print Sources</p>
+<p>
+https://www.tipharma.com/fileadmin/user_upload/Theses/PDF/Saskia_Braber_T1-103.pdf
+<br>
+http://www.scielo.br/pdf/eins/v8n2/1679-4508-eins-8-2-0248.pdf
+<br>
+http://www.european-radiology.org/cms/filepool/399/EN/fulltext%20issue%2003_volume19_p537-551.pdf
+<br>
+http://physiologyonline.physiology.org/content/nips/21/6/396.full.pdf
+<br>
+http://www.tandfonline.com/doi/abs/10.1080/00039896.1962.10663295?journalCode=vzeh20
+</p>
+<p style=text-align:center;font-size:100%>WEB and IMAGES</p>
+<p style=font-size:100%>
+http://www.tabletsmanual.com/wiki/read/pulmonary_emphysema_and_bronchitis
+<br>
+http://www.siumed.edu/surgery/cardiothoracic/emphysema.html
+<br>
+https://www.drugs.com/health-guide/emphysema.html
+</p>
+<br>
+
+<center>
+
+
 <canvas id="canvas" width="250" height="250"></canvas>
 
 
@@ -257,150 +466,27 @@ function drawHand(ctx, pos, length, width) {
 </TR>
 </TABLE>
 </FORM>
-</right>
-
-</div>
-</div>
 
 
-<div id="description">
-<div id="content1">
-<h1>Description</h1>
-<p>Pulmonary Emphysema is a form of chronic obstructive pulmonary disease, a lung disease in which the walls that separate the lung's tiny air sacs (alveoli) are damaged.</p>
-</div>
-<div id="img1">
-<img id="myImage" onclick="changeImage()" src="http://i.imgur.com/riMUTq9.jpg" width="450" height="450">
-<h5>Click on the image to see what alveoli with and without the disease looks like.</h5>
-<script>x
-function changeImage() {
-    var image = document.getElementById('myImage');
-    if (image.src.match("VIZ")) {
-        image.src = "http://i.imgur.com/riMUTq9.jpg";
-    } else {
-        image.src = "http://i.imgur.com/VIZsLvW.jpg";
-    }
-}
+
+<p id="date" style="color: BLACK; font-size: 200%;"> </p>
+
+<script>
+
+var d = new Date();
+document.getElementById("date").innerHTML = "Today is " + d.toDateString();
+
 </script>
 
-</div>
-</div>
 
 
-<div id="causes">
+Visitor Counter
 
-<div id="img2">
-<center>
-<img src="http://i.imgur.com/2JZOPAs.jpg" width="450" height="450">
+<br/> <br/>
+
+<div align='center'><a href='http://www.hit-counter-html-code.com'><img src='http://hit-counter-html-code.com/wp-content/themes/customizr/hitcounter/c.php?d=9&id=160471&s=1' border='0' title='Visitor Counter' width=350 ></a><br / ><small><a href='http://www.hit-counter-html-code.com' title="Visitor Counter"></a></small></div>
+
 </center>
-</div>
-
-<div id="content2">
-<h1>Causes</h1>
-<p>
-Smoking, specially in large amounts is the main cause of Pulmonary Emphysema.
-Other cause include:
-Do you breathe passive (secondhand) smoke at work or at home?
-Do you live or work in an area where you are exposed to airborne irritants or noxious materials?
-Do you live in an area with significant air pollution?
-Is there a family history of:
-AAT deficiency
-Early onset of emphysema
-Non-smokers who developed emphysema
-</p>
-</div>
-</div>
-
-
-
-
-<div id="effects">
-<div id="content3">
-<h1>Effects</h1>
-<p>This damage results in the lungs losing their normal elasticity. Without the ability to expand and contract with each breath, the lungs become flaccid and loose, increasingly unable to move air in and out or properly exchange oxygen and carbon dioxide between the air and blood. As the lungs become overly inflated, even the smallest physical exertion becomes difficult.</p>
-<p>This may cause the patient to suffer cough, wheezing, and other simila symptoms due to the lack of oxygen and the improper functioning of the lung, as a result of the disease.</p>
-</div>
-<div id="img3">
-<center>
-<img src="https://www.elcaminohospital.org/sites/ech/files/library_images/323092.jpg" width="450" height="450">
-</center>
-</div>
-</div>
-
-
-
-
-<div id="prevention">
-<div id="content4">
-<h1>Prevention</h1>
-<p>
-If you smoke, stop. If you don't smoke, don't start. By quitting smoking you can either prevent emphysema or slow its progression.
-You also should limit your exposure to air pollution. Restrict your outdoor activity when there are reports of high smog levels.
-People exposed to harmful chemicals at work should speak to their employers about respirator masks. Or, consult with a specialist in occupational medicine.
-If you have emphysema, ask your doctor about vaccinations against influenza (flu) and pneumococcal pneumonia. These vaccinations can help to prevent life-threatening respiratory infections in people with lung disease.
-</p>
-</div>
-<div id="img4">
-<center>
-<img src="http://www.belmarrahealth.com/wp-content/uploads/2015/10/ThinkstockPhotos-485052180.jpg" width="450" height="450">
-</center>
-</div>
-</div>
-
-
-<div id="treatment">
-<div id="content5">
-<h1>Treatment</h1>
-<p>
-There is no treatment that directly cures Pulmonary Emphysema.
-<p>But there are remedies such as Lung Volume Reduction Surgery, the surgical extraction of diseased parts of the lung and the taking of antibiotics that can help to:</p>
-<p>+ Relieve symptoms</p>
-<p>+ Treat complications</p>
-<p>+ Minimize disability</p>
-<p>Doctors' top treatment advice is to quit smoking. Such is the single most important factor for maintaining healthy lungs. Stopping smoking is most effective at the early stages of emphysema. But it also can slow the loss of lung function in later stages of the disease.</p>
-</div>
-<div id="img5">
-<center>
-<img src="http://www.marcoscarci.co.uk/images/severe-chest-infection-surgery.jpg?crc=3919689646" width="450" height="450">
-</center>
-</div>
-</div>
-
-
-
-
-<div id="sources">
-<h1>Sources</h1>
-<p style=font-size:100%>
-All sources are journals, theses, books or other verified professional studies on the said topic. All sources were analysed and checked before use. Gratitude and credit is expressed to all the sources used.
-</p>
-<!--CHANGE TO APA -->
-<p style=text-align:center;font-size:100%>PDFs and Print Sources</p>
-<p style=font-size:100%>
-https://www.tipharma.com/fileadmin/user_upload/Theses/PDF/Saskia_Braber_T1-103.pdf
-<br>
-http://www.scielo.br/pdf/eins/v8n2/1679-4508-eins-8-2-0248.pdf
-<br>
-http://www.european-radiology.org/cms/filepool/399/EN/fulltext%20issue%2003_volume19_p537-551.pdf
-<br>
-http://physiologyonline.physiology.org/content/nips/21/6/396.full.pdf
-<br>
-http://www.tandfonline.com/doi/abs/10.1080/00039896.1962.10663295?journalCode=vzeh20
-</p>
-<p style=text-align:center;font-size:100%>WEB and IMAGES</p>
-<p style=font-size:100%>
-http://www.tabletsmanual.com/wiki/read/pulmonary_emphysema_and_bronchitis
-<br>
-http://www.siumed.edu/surgery/cardiothoracic/emphysema.html
-<br>
-https://www.drugs.com/health-guide/emphysema.html
-</p>
-<br>
-
-
-<!-- SHOULD I REMOVE THIS?!?!?! -->
-<p id="demo" style=text-align:center; font-size:200%></p>
-
-
 
 
 
